@@ -34,7 +34,7 @@ const Home = () => {
 
       <div className="container">
         <div className="featured-property-half d-flex">
-          <div className="text">
+          {/* <div className="text">
             <h2>Studio apartament</h2>
             <p className="mb-5">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis
@@ -64,13 +64,13 @@ const Home = () => {
                 Get Details
               </a>
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
 
       <div className="bg-primary" data-aos="fade">
         <div className="container">
-          <div className="row">
+          {/* <div className="row">
             <a href="#" className="col-2 text-center py-4 social-icon d-block">
               <span className="icon-facebook text-white"></span>
             </a>
@@ -89,7 +89,7 @@ const Home = () => {
             <a href="#" className="col-2 text-center py-4 social-icon d-block">
               <span className="icon-youtube text-white"></span>
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
