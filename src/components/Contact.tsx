@@ -62,7 +62,7 @@ const Contact = () => {
 
             <div className="p-4 mb-3 bg-white">
               <p className="mb-0 font-weight-bold text-black">Telefon</p>
-              <p className="mb-4 text-black">Wakacje 4U Piotr Skirski</p>
+              <p className="mb-4">(+48) 788795764</p>
             </div>
 
             <div className="p-4 mb-3 bg-white">
