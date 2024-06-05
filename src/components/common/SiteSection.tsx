@@ -1,4 +1,10 @@
-const SiteSection = ({ children }) => {
+import { ReactNode } from "react";
+
+interface Props {
+  children?: ReactNode;
+}
+
+const SiteSection = ({ children }: Props) => {
   return (
     <div className="site-section">
       <div className="container">

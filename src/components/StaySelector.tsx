@@ -2,16 +2,11 @@ import { useState } from "react";
 import { addDays } from "date-fns";
 import { pl } from "date-fns/locale";
 import { DateRange } from "react-date-range";
-import { IRange, ReservationSettings, toIsoRange } from "../models/Domain";
 import { getDaysWithinRange } from "../models/DateHelpers";
 import { isMobile } from "react-device-detect";
 
-export interface Props {
-  setValue;
-}
-
-const StaySelector = (props: Props) => {
-  const [selectedRange, setSelectedRange] = useState([
+const StaySelector = () => {
+  const [selectedRange] = useState([
     {
       startDate: new Date(),
       endDate: addDays(new Date(), 1),
@@ -28,30 +23,7 @@ const StaySelector = (props: Props) => {
   );
   const minStay = useState<number>(6);
 
-  const [isSelectionValid, setIsSelectionValid] = useState<boolean>(true);
-
-  // useEffect(() => {
-  //   async function fetchUnavailableDates() {
-  //     const response = await apiClient.get<ReservationSettings>(
-  //       "reservation/dates/unavailable"
-  //     );
-  //     setUnavailableDates(response.data.datesUnavailable);
-  //     setMinStay(response.data.minDaysOfStay);
-  //   }
-  //   fetchUnavailableDates();
-  // }, []);
-
-  const setSelectedDates = (ranges: IRange[]) => {
-    const range = ranges[0];
-    const daysWithinSelectedRange = getDaysWithinRange(range);
-    if (daysWithinSelectedRange.length < minStay) {
-      setIsSelectionValid(false);
-    } else {
-      setIsSelectionValid(true);
-      setSelectedRange([toIsoRange(range)]);
-      props.setValue("dateRange", range);
-    }
-  };
+  const [isSelectionValid] = useState<boolean>(true);
 
   return (
     <div className="site-section-sm">
@@ -67,8 +39,8 @@ const StaySelector = (props: Props) => {
 
             {!isSelectionValid && (
               <p className="mb-4 text-black">
-                Wybrany okres jest krótszy niż minimalny czas pobytu - {minStay}{" "}
-                dni
+                Wybrany okres jest krótszy niż minimalny czas pobytu -{" "}
+                {minStay[0]} dni
               </p>
             )}
           </div>
@@ -82,7 +54,7 @@ const StaySelector = (props: Props) => {
             direction={isMobile ? "vertical" : "horizontal"}
             editableDateInputs={false}
             // onChange={(item) => setState([item.selection])}
-            onChange={(item) => setSelectedDates([item.selection as IRange])}
+            // onChange={(item) => setSelectedDates([item.selection as IRange])}
             moveRangeOnFirstSelection={false}
             ranges={selectedRange}
           />
