@@ -7,8 +7,6 @@ import { Enquiry } from "../models/Domain";
 
 const Contact = () => {
   const {
-    register,
-    handleSubmit,
     setValue,
     formState: { errors },
   } = useForm();

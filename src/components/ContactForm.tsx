@@ -25,7 +25,7 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
+    <form className="contact-form">
       <div className="row form-group">
         <div className="col-md-12 mb-3 mb-md-0">
           <label className="font-weight-bold" htmlFor="fullname">

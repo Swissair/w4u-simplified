@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { addDays } from "date-fns";
 import { pl } from "date-fns/locale";
 import { DateRange } from "react-date-range";
 import { IRange, ReservationSettings, toIsoRange } from "../models/Domain";
 import { getDaysWithinRange } from "../models/DateHelpers";
-import apiClient from "../services/apiClient";
 import { isMobile } from "react-device-detect";
 
 export interface Props {
@@ -20,22 +19,16 @@ const StaySelector = (props: Props) => {
     },
   ]);
 
-  const [unavailableDates, setUnavailableDates] = useState<Date[]>(
+  const [unavailableDates] = useState<Date[]>(
     getDaysWithinRange({
       startDate: new Date("2024-06-22T14:48:00.000Z"),
       endDate: new Date("2024-07-07T14:48:00.000Z"),
       key: "selection",
     })
   );
-  const [minStay, setMinStay] = useState<number>(6);
+  const minStay = useState<number>(6);
 
   const [isSelectionValid, setIsSelectionValid] = useState<boolean>(true);
-
-  const [reservationSettings, setReservationSettings] =
-    useState<ReservationSettings>({
-      minDaysOfStay: 6,
-      datesUnavailable: unavailableDates,
-    });
 
   // useEffect(() => {
   //   async function fetchUnavailableDates() {

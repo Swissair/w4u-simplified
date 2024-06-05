@@ -1,5 +1,5 @@
 import { IRange } from "./Domain";
-import { addDays, isEqual } from "date-fns";
+import { addDays } from "date-fns";
 
 export const getDaysWithinRange = (range: IRange): Date[] => {
   let currentDate = range.startDate;
