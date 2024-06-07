@@ -2,15 +2,11 @@ import { useState } from "react";
 import { addDays } from "date-fns";
 import { pl } from "date-fns/locale";
 import { DateRange } from "react-date-range";
-import { IRange, ReservationSettings, toIsoRange } from "../models/Domain";
+import { IRange, toIsoRange } from "../models/Domain";
 import { getDaysWithinRange } from "../models/DateHelpers";
 import { isMobile } from "react-device-detect";
 
-export interface Props {
-  setValue;
-}
-
-const StaySelector = (props: Props) => {
+const StaySelector = () => {
   const [selectedRange, setSelectedRange] = useState([
     {
       startDate: new Date(),
@@ -30,26 +26,15 @@ const StaySelector = (props: Props) => {
 
   const [isSelectionValid, setIsSelectionValid] = useState<boolean>(true);
 
-  // useEffect(() => {
-  //   async function fetchUnavailableDates() {
-  //     const response = await apiClient.get<ReservationSettings>(
-  //       "reservation/dates/unavailable"
-  //     );
-  //     setUnavailableDates(response.data.datesUnavailable);
-  //     setMinStay(response.data.minDaysOfStay);
-  //   }
-  //   fetchUnavailableDates();
-  // }, []);
-
   const setSelectedDates = (ranges: IRange[]) => {
     const range = ranges[0];
     const daysWithinSelectedRange = getDaysWithinRange(range);
-    if (daysWithinSelectedRange.length < minStay) {
+    if (daysWithinSelectedRange.length < minStay[0]) {
       setIsSelectionValid(false);
     } else {
       setIsSelectionValid(true);
       setSelectedRange([toIsoRange(range)]);
-      props.setValue("dateRange", range);
+      // props.setValue("dateRange", range);
     }
   };
 
@@ -67,8 +52,8 @@ const StaySelector = (props: Props) => {
 
             {!isSelectionValid && (
               <p className="mb-4 text-black">
-                Wybrany okres jest krótszy niż minimalny czas pobytu - {minStay}{" "}
-                dni
+                Wybrany okres jest krótszy niż minimalny czas pobytu -{" "}
+                {minStay[0]} dni
               </p>
             )}
           </div>
