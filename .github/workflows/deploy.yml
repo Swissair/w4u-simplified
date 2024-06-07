@@ -26,7 +26,7 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.name "Piotr Skirski"
+          git config --global user.name "swissair"
           git config --global user.email "pskirski@gmail.com"
 
       - name: Deploy to GitHub Pages
