@@ -30,9 +30,8 @@ jobs:
       #     git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Deploy to GitHub Pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
         run: |
-          git config --global user.name "Swissair"
-          git config --global user.email "pskirski@gmail.com"
           npm run deploy
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
