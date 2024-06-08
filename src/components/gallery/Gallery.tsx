@@ -2,7 +2,6 @@ import Balcony from "./Balcony";
 import Bathroom from "./Bathroom";
 import Kitchen from "./Kitchen";
 import ParkingLot from "./ParkingLot";
-import RoofTarace from "./RoofTarace";
 import RoomPanorama from "./RoomPanorama";
 
 const Gallery = () => {

@@ -1,29 +1,4 @@
-import { useForm } from "react-hook-form";
-import { Enquiry } from "../models/Domain";
-import apiClient from "../services/apiClient";
-
 const ContactForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const onSubmit = async (data: Enquiry) => {
-    try {
-      await apiClient.post("reservation/enquire", {
-        ...data,
-        dateRange: {
-          startDate: "2024-05-25T21:24:03.353Z",
-          endDate: "2024-05-25T21:24:03.353Z",
-          key: "selection",
-        },
-      });
-    } catch (error) {
-      console.error("There was an error!", error);
-    }
-  };
-
   return (
     <form className="contact-form">
       <div className="row form-group">
@@ -36,7 +11,7 @@ const ContactForm = () => {
             id="fullname"
             className="form-control"
             placeholder="Imię i Nazwisko"
-            {...register("fullname", { required: true })}
+            // {...register("fullname", { required: true })}
           />
         </div>
       </div>
@@ -50,13 +25,13 @@ const ContactForm = () => {
             id="email"
             className="form-control"
             placeholder="Adres email"
-            {...register("email", {
-              required: true,
-              pattern: {
-                value: /\S+@\S+\.\S+/,
-                message: "Entered value does not match email format",
-              },
-            })}
+            // {...register("email", {
+            //   required: true,
+            //   pattern: {
+            //     value: /\S+@\S+\.\S+/,
+            //     message: "Entered value does not match email format",
+            //   },
+            // })}
           />
         </div>
       </div>
@@ -70,7 +45,7 @@ const ContactForm = () => {
             id="subject"
             className="form-control"
             placeholder="Tytuł"
-            {...register("subject", { required: true })}
+            // {...register("subject", { required: true })}
           />
         </div>
       </div>
@@ -87,9 +62,9 @@ const ContactForm = () => {
             rows={5}
             className="form-control"
             placeholder="Jestem zainteresowany pobytem od ... do ..."
-            {...register("message", {
-              required: true,
-            })}
+            // {...register("message", {
+            //   required: true,
+            // })}
           ></textarea>
         </div>
       </div>

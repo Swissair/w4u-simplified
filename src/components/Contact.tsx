@@ -1,24 +1,8 @@
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import StaySelector from "./StaySelector";
-import { useForm } from "react-hook-form";
-import apiClient from "../services/apiClient";
-import { Enquiry } from "../models/Domain";
 
 const Contact = () => {
-  const {
-    setValue,
-    formState: { errors },
-  } = useForm();
-
-  const onSubmit = async (data: Enquiry) => {
-    try {
-      await apiClient.post("reservation/enquire", data);
-    } catch (error) {
-      console.error("There was an error!", error);
-    }
-  };
-
   return (
     <>
       <div
@@ -43,7 +27,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <StaySelector setValue={setValue} />
+      <StaySelector />
 
       <div className="site-section-sm border-bottom">
         <div className="container">
