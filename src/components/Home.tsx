@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import hero_bg_lake_view_1 from "../../public/images/hero_bg_lake_view_1.jpg";
+import hero_bg_lake_view_1 from "../assets/images/hero_bg_lake_view_1.jpg";
 
 const Home = () => {
   return (
@@ -7,7 +7,7 @@ const Home = () => {
       <div
         className="site-blocks-cover overlay"
         style={{
-          backgroundImage: hero_bg_lake_view_1,
+          backgroundImage: `url(${hero_bg_lake_view_1})`,
         }}
         data-aos="fade"
         data-stellar-background-ratio="0.5"
